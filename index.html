@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Saptam Numerology | Professional Global Destiny & Psychic Tool</title>
+    <meta name="description" content="Unlock your global destiny with Saptam Numerology. Calculate your psychic number, lucky colors, and career traits instantly. Developed by Kalyan Borah.">
+    <meta name="keywords" content="Numerology Calculator, Psychic Number, Lucky Number 7, Destiny Finder, Kalyan Borah, Saptam Tools, Astrology Web Tool">
+    <meta name="author" content="Kalyan Borah">
+    <link rel="canonical" href="https://yourusername.github.io/saptam-numerology/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/saptam-numerology/">
+    <meta property="og:title" content="Saptam Numerology: Discover Your Vibration">
+    <meta property="og:description" content="Calculate your lucky numbers and career traits using the ancient Saptam method. Fast, free, and secure.">
+    <meta property="og:image" content="https://yourusername.github.io/saptam-numerology/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Saptam Numerology | Global Destiny Tool">
+    <meta property="twitter:description" content="Built for global seekers. Find your lucky traits in seconds.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Saptam Numerology",
+      "url": "https://yourusername.github.io/saptam-numerology/",
+      "description": "A global numerology tool to calculate psychic numbers and lucky traits.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Person",
+        "name": "Kalyan Borah"
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --gold: #D4AF37; --silver: #C0C0C0; --midnight: #0F172A; --glass: rgba(255, 255, 255, 0.9); }
+        * { box-sizing: border-box; transition: 0.3s; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: #f4f7f6; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: var(--midnight); }
+        
+        .main-card { width: 92%; max-width: 480px; margin: 40px 0; padding: 40px 25px; background: var(--glass); backdrop-filter: blur(15px); border-radius: 35px; border: 1px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.08); text-align: center; }
+        
+        h1 { font-size: 26px; color: var(--gold); letter-spacing: 2px; margin-bottom: 5px; }
+        .tagline { font-size: 13px; color: #64748b; margin-bottom: 30px; }
+
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { font-size: 11px; font-weight: 600; color: var(--gold); margin-left: 10px; }
+        input { width: 100%; padding: 16px; margin-top: 5px; border: 1.5px solid var(--silver); border-radius: 15px; font-size: 16px; outline: none; }
+        input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.15); }
+
+        .btn-calc { width: 100%; padding: 18px; background: var(--midnight); color: white; border: none; border-radius: 15px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .btn-calc:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        #results { margin-top: 30px; padding: 25px; background: white; border-radius: 20px; display: none; text-align: left; border-left: 6px solid var(--gold); }
+        .luck-num { font-size: 48px; font-weight: 700; color: var(--gold); text-align: center; display: block; margin-bottom: 10px; }
+
+        .footer { margin-top: 25px; font-size: 11px; color: #94a3b8; }
+        .legal-links { margin-top: 10px; }
+        .legal-links a { color: var(--gold); text-decoration: none; margin: 0 8px; font-weight: 600; cursor: pointer; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 99; }
+        .modal-content { background: white; padding: 30px; border-radius: 20px; max-width: 450px; width: 85%; }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <header>
+        <h1>SAPTAM GLOBAL</h1>
+        <p class="tagline">Ancient Numerology • Modern Precision</p>
+    </header>
+
+    <main>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter name" aria-label="Full Name">
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" aria-label="Date of Birth">
+        </div>
+
+        <button class="btn-calc" onclick="runSaptam()">UNVEIL YOUR VIBRATION</button>
+
+        <section id="results" aria-live="polite">
+            <span class="luck-num" id="res-num">?</span>
+            <p style="text-align:center; font-size:12px; color:#64748b; margin-bottom:15px;">Your Psychic Number</p>
+            <div style="font-size:14px; line-height:1.6;">
+                <p><b>Personality:</b> <span id="res-pers"></span></p>
+                <p><b>Lucky Color:</b> <span id="res-color"></span></p>
+                <p><b>Lucky Day:</b> <span id="res-day"></span></p>
+                <p><b>Key Trait:</b> <span id="res-trait"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="legal-links">
+            <a onclick="toggleModal('Privacy')">Privacy</a>
+            <a onclick="toggleModal('Terms')">Terms</a>
+        </div>
+        <p>© 2026 Saptam Tools | Built by Kalyan Borah</p>
+    </footer>
+</div>
+
+<div id="legalModal" class="modal" onclick="toggleModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h2 id="modalTitle"></h2>
+        <p id="modalBody"></p>
+        <button class="btn-calc" onclick="toggleModal()">Got it</button>
+    </div>
+</div>
+
+<script>
+    function runSaptam() {
+        const name = document.getElementById('name').value;
+        const dob = document.getElementById('dob').value;
+        if (!name || !dob) { alert("Please fill all details!"); return; }
+
+        const day = new Date(dob).getDate();
+        let n = (day > 9) ? Math.floor(day/10) + (day%10) : day;
+        if(n > 9) n = Math.floor(n/10) + (n%10);
+
+        const data = {
+            1: ["Pioneer & Leader", "Gold", "Sunday", "Ambition"],
+            2: ["Diplomat & Peacekeeper", "Silver/White", "Monday", "Harmony"],
+            3: ["Artist & Communicator", "Yellow", "Thursday", "Creativity"],
+            4: ["Architect & Builder", "Blue/Grey", "Saturday", "Discipline"],
+            5: ["Adventurer & Voyager", "Green", "Wednesday", "Freedom"],
+            6: ["Healer & Nurturer", "Light Blue", "Friday", "Responsibility"],
+            7: ["Spiritual Seeker & Wise Analyst", "Pearl/Purple", "Friday", "Intuition"],
+            8: ["Financial Strategist", "Dark Blue", "Saturday", "Success"],
+            9: ["Humanitarian Leader", "Red", "Tuesday", "Compassion"]
+        };
+
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('res-num').innerText = n;
+        document.getElementById('res-pers').innerText = data[n][0];
+        document.getElementById('res-color').innerText = data[n][1];
+        document.getElementById('res-day').innerText = data[n][2];
+        document.getElementById('res-trait').innerText = data[n][3];
+
+        if(n === 7) document.getElementById('res-num').style.textShadow = "0 0 15px gold";
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function toggleModal(type) {
+        const m = document.getElementById('legalModal');
+        if(type) {
+            document.getElementById('modalTitle').innerText = type + " Policy";
+            document.getElementById('modalBody').innerText = type === "Privacy" 
+                ? "Your data stays on your device. We do not store birth dates or names on any server. Purely client-side processing."
+                : "Results are for entertainment and insight. Use of this tool constitutes agreement that Kalyan Borah is not liable for destiny outcomes.";
+            m.style.display = 'flex';
+        } else { m.style.display = 'none'; }
+    }
+</script>
+</body>
+</html>
